@@ -26,5 +26,11 @@ class BookmarkManager < Sinatra::Base
     redirect to('/links')
   end
 
+  get '/tags/:subject' do
+    @tag = params[:subject].downcase
+    @links = Link.all.select{|link| link.tags.first.name.downcase == @tag}
+    erb :'tags/subject'
+  end
+
   run! if app_file == $0
 end
