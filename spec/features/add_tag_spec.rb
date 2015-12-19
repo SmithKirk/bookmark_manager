@@ -1,5 +1,5 @@
 feature 'should add tag to link' do
-  scenario 'add tag to a tag' do
+  scenario 'add tag to a link' do
     visit('/')
     click_link('Add bookmark')
     fill_in 'title', with: 'This is Zombocom'
@@ -15,10 +15,8 @@ feature 'should add tag to link' do
     fill_in 'url',   with: 'http://www.makersacademy.com/'
     fill_in 'title', with: 'Makers Academy'
     fill_in 'tags',  with: 'education'
-
     click_button 'Create link'
     link = Link.first
     expect(link.tags.map(&:name)).to include('education')
   end
-
 end

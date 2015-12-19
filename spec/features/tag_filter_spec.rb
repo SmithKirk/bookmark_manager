@@ -12,6 +12,7 @@ feature 'can filter links by tag' do
     visit '/tags/news'
     within 'ul#links' do
       expect(page).to have_content 'Title: BBC URL: http://bbc.com Title: Sky URL: http://sky.com'
+      expect(page).not_to have_content 'Title: Gsme URL: http://game.com'
     end
   end
 end
