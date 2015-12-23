@@ -1,5 +1,5 @@
 feature 'add more than one tag to a link' do
-  scenario 'link has two tags' do
+  scenario 'add multiple tags to link' do
     visit '/links/new'
     fill_in 'url',   with: 'http://www.makersacademy.com/'
     fill_in 'title', with: 'Makers Academy'
