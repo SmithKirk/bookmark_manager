@@ -1,18 +1,19 @@
 feature 'can filter links by tag' do
+  before(:each) do
+    Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy', tags: [Tag.first_or_create(name: 'education')])
+    Link.create(url: 'http://www.google.com', title: 'Google', tags: [Tag.first_or_create(name: 'search')])
+    Link.create(url: 'http://www.zombo.com', title: 'This is Zombocom', tags: [Tag.first_or_create(name: 'bubbles')])
+    Link.create(url: 'http://www.bubble-bobble.com', title: 'Bubble Bobble', tags: [Tag.first_or_create(name: 'bubbles')])
+  end
+
   scenario 'user can view links with matching tags' do
-    education_tag = Tag.create(name: 'Education')
-    news_tag = Tag.create(name: 'News')
-    gaming_tag = Tag.create(name: 'Gaming')
-
-    Link.create(url: 'http://makersacademy.com', title: 'Makers Academy', tags: [education_tag])
-    Link.create(url: 'http://bbc.com', title: 'BBC', tags: [news_tag])
-    Link.create(url: 'http://sky.com', title: 'Sky', tags: [news_tag])
-    Link.create(url: 'http://game.com', title: 'Game', tags: [gaming_tag])
-
-    visit '/tags/news'
+    visit '/tags/bubbles'
+    expect(page.status_code).to eq (200)
     within 'ul#links' do
-      expect(page).to have_content 'Title: BBC URL: http://bbc.com Title: Sky URL: http://sky.com'
-      expect(page).not_to have_content 'Title: Gsme URL: http://game.com'
+      expect(page).not_to have_content('Makers Academy')
+      expect(page).not_to have_content('Code.org')
+      expect(page).to have_content('This is Zombocom')
+      expect(page).to have_content('Bubble Bobble')
     end
   end
 end

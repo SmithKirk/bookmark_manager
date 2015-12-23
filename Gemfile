@@ -9,6 +9,7 @@ gem 'rspec-sinatra'
 gem 'dm-postgres-adapter'
 gem 'data_mapper'
 gem 'database_cleaner'
+gem 'bcrypt'
 
 group :development do
   gem 'byebug'

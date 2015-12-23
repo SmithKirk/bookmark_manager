@@ -112,6 +112,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   byebug
   capybara
   data_mapper
@@ -122,4 +123,4 @@ DEPENDENCIES
   sinatra
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

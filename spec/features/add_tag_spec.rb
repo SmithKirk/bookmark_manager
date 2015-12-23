@@ -1,7 +1,6 @@
 feature 'should add tag to link' do
   scenario 'add tag to a link' do
-    visit('/')
-    click_link('Add bookmark')
+    visit('/links/new')
     fill_in 'title', with: 'This is Zombocom'
     fill_in 'url', with: 'http://www.zombo.com/'
     fill_in 'tags', with: 'News'
