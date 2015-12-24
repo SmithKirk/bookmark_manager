@@ -10,6 +10,7 @@ gem 'dm-postgres-adapter'
 gem 'data_mapper'
 gem 'database_cleaner'
 gem 'bcrypt'
+gem 'sinatra-flash'
 
 group :development do
   gem 'byebug'
