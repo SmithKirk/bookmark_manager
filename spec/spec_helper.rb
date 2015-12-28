@@ -8,8 +8,13 @@ require 'capybara/rspec'
 require 'rspec'
 require './app/models/link'
 require 'database_cleaner'
+require_relative 'helpers/session'
 
 Capybara.app = BookmarkManager
+
+RSpec.configure do |config|
+  config.include SessionHelpers
+end
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
